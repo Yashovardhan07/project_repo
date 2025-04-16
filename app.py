@@ -4,10 +4,10 @@ import os
 from PIL import Image
 import tensorflow as tf
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Define the path to the TFLite model
-BASE_DIR = os.path.dirname(os.path.abspath(_file_))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, 'models', 'potato_classifier.tflite')
 
 # Load the TFLite model and allocate tensors
@@ -54,5 +54,5 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
